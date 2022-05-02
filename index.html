@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <title>Stock Ticker</title>
+   <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+</head>
+<body>
+   <h1>Stock Ticker</h1>
+   <!-- input form -->
+   <form name="stocks" method="post" action="http://localhost:8080/process">
+       <p class="userInfo"><label>Search by</label>: </p>
+       <p>
+           <input type="radio"  name="c_or_t" value = "coName" id="coName"
+           checked="checked"/>Company Name 
+           <input type="text" name='searchC' id='searchC'/>
+       </p>
+       <p>
+           <!-- radio button -->
+           <input type="radio"  name='c_or_t' value = 'coTicker' id="coTicker"/>Ticker
+           <input type="text" name='searchT' id='searchT'/>
+       </p>
+       <input type = "submit" value = "Search"/>
+   </form>
+   <!-- end input form -->
+   <script>
+       // default is company so hide ticker
+       $("#searchT").hide();  
+       // if company is clicked, hide ticker
+       $("#coName").click(function(){
+           $("#searchC").show();
+           $("#searchT").hide();
+       });
+       // if ticker is clicked, hide company
+       $("#coTicker").click(function(){
+           $("#searchT").show();
+           $("#searchC").hide();
+       });
+   </script>
+</body>
